@@ -11,11 +11,15 @@
 </head>
 <body>
     <div id="aplicacion">
+            <h1 v-if="(oportunidades==3)"> Ya realizaste 3 tiros</h1>
+            <h1 v-else >Tiros: {{oportunidades}} </h1>
             <h2> jugador 1: {{ jugador1 }}</h2>
             <h2> jugador 2: {{ jugador2 }}</h2>
-            <h1>{{ ganador }}</h1>
+            <h1 v-if="(oportunidades>0)">{{ ganador }}</h1>
+            <h1 v-else=>¡Comienza!</h1>
 
-            <input type="button" v-on:click="jugar" value="Jugar">
+            <input type="button" v-on:click="jugar" :disabled="oportunidades==3" value="Jugar">
+            <input type="button" value="Reiniciar"  v-on:click="reiniciar" v-if="(oportunidades>0)">
     </div>
     <script type="text/javascript">
     new Vue ({
@@ -24,6 +28,7 @@
             jugador1:0,
             jugador2:0,
             ganador:"--",
+            oportunidades:0,
       },
       methods: {
 
@@ -38,9 +43,15 @@
              } else if ( this.jugador1!=this.jugador2 ){
                  mensaje="Gana jugador 2";
              }
+             this.oportunidades++;
 
              this.ganador=mensaje;
+        },
+        reiniciar:function(event){
+            this.oportunidades=0 ;
+
         }
+        
           
       },  
     })
