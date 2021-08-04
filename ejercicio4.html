@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+</head>
+<body>
+    <div id="aplicacion">
+
+        <ul>
+            <li v-for=" canal in canalesYoutube"> 
+                
+                El Canal  <a v-bind:href="canal.url"> "{{ canal.nombre }}"</a> esta dirigido por {{ canal.edutuber }}</li>
+        </ul>
+
+    </div>
+
+    <script type="text/javascript">
+
+        new Vue({
+            el:"#aplicacion",
+            data:{
+                canalesYoutube:[
+                { nombre:" develoteca",edutuber:"Oscar", url:"https://www.youtube.com/develoteca"},
+                {nombre:"hdeleon", edutuber:"Hector", url:"https://www.youtube.com/develoteca"},
+                {nombre:"Manuel Zapata", edutuber:"Manuel", url:"https://www.youtube.com/develoteca"},
+                {nombre:" Dominicode", edutuber:"Bezael", url:"https://www.youtube.com/develoteca"},
+                {nombre:" Coderos", edutuber:"Christopher", url:"https://www.youtube.com/develoteca"},
+
+                ]
+
+
+
+            }
+        })
+    
+    
+    </script>
+
+
+</body>
+</html>
