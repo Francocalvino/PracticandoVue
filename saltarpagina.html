@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+</head>
+<body>
+    <div id="aplicacion">
+
+            <a href="#acerca" @click="cambiarPagina('acerca')"> Acerca </a> |
+            <a href="#home" @click="cambiarPagina('home')"> Home </a>
+
+        <hr/>
+
+        <keep-alive>
+            <component :is="paginaActual"></component>
+        </keep-alive>
+
+    </div>
+    
+
+
+
+    <script type="text/javascript">
+
+        new Vue({
+            el:"#aplicacion",
+            data:{
+                paginaActual:'home'
+            },
+            methods: {
+                cambiarPagina:function(pagina){
+                    this.paginaActual=pagina;
+                }
+            },
+            components: {
+                home: {
+                    template:'<div> <h2> home </h2> <p> {{ datosHome }} </p>   <h3>{{ datosHome }}</h3> </div>',
+                    data:function(){ return { datosHome:'Soy Home' } }
+                },
+                acerca: {
+                    template:'<div> <h2> Acerca </h2> <p> {{ datosAcerca }} </p>  </div>',
+                    
+                    data:function(){ return { datosAcerca:'Soy Acerca' } }
+                    
+                }
+            }
+
+        })
+  
+    </script>
+</body>
+</html>
