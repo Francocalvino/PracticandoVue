@@ -11,13 +11,14 @@
 </head>
 <body>
     <div id="aplicacion">
-
         <contador nombre-clase="btn btn-info" ></contador> 
         <contador nombre-clase="btn btn-success "></contador> 
         <contador nombre-clase="btn btn-danger" ></contador>
-   
+     </div>
 
-
+     <div id="aplicacion1">
+        <contador nombre-clase="btn btn-success "></contador> 
+        <mensaje></mensaje>
      </div>
 
      <script type="text/javascript">
@@ -29,13 +30,23 @@
                 },
                 template: '<button v-bind:class="nombreClase" v-on:click="count++"> Click {{ count }} veces </button>'
                 ,
-                props: [ 'nombre-clase' ],
+                props: [ 'nombreClase' ],
             }
         )
+        let componenteMensaje={
+
+            template: '<div class="alert alert-primary"> Texto de mensaje </div>'
+
+        }
 
         new Vue({
             el:"#aplicacion",
-            
+        })
+        new Vue({
+            el:"#aplicacion1",
+            components:{
+                'mensaje':componenteMensaje
+            }
         })
      
      </script>
